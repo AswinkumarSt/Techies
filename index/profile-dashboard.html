@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Dashboard</title>
+    <link rel="stylesheet" href="profile-dashboard.css">
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <section id="dashboard">
+        <div class="container">
+            <h2>My Bookings</h2>
+            <ul id="booking-list"></ul>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Namastay. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZq-Dz5dkj-I_-x6jNbr0HV4iV61LVd20",
+            authDomain: "namastay-fa137.firebaseapp.com",
+            databaseURL: "https://namastay-fa137-default-rtdb.firebaseio.com",
+            projectId: "namastay-fa137",
+            storageBucket: "namastay-fa137.appspot.com",
+            messagingSenderId: "591100525672",
+            appId: "1:591100525672:web:d826c565a424d5e2838fdd",
+            measurementId: "G-BV1H3F10JN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const bookingList = document.getElementById("booking-list");
+
+        // Function to delete a booking
+        function deleteBooking(bookingId) {
+            // Remove booking from UI
+            const bookingItem = document.getElementById(bookingId);
+            bookingItem.remove();
+
+            // Remove booking from Firestore
+            db.collection("bookings").doc(bookingId).delete()
+                .then(() => {
+                    console.log("Booking successfully deleted!");
+                })
+                .catch((error) => {
+                    console.error("Error deleting booking: ", error);
+                });
+        }
+
+        // Retrieve booking details from Firestore
+        db.collection("bookings").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const bookingData = doc.data();
+                const bookingId = doc.id;
+                const bookingItem = document.createElement("li");
+                bookingItem.setAttribute("id", bookingId);
+                bookingItem.innerHTML = `
+                    <p>Name: ${bookingData.name}</p>
+                    <p>Email: ${bookingData.email}</p>
+                    <p>Check-in Date: ${bookingData.checkInDate}</p>
+                    <p>Check-out Date: ${bookingData.checkOutDate}</p>
+                    <button onclick="deleteBooking('${bookingId}')">Delete</button>
+                    <hr>
+                `;
+                bookingList.appendChild(bookingItem);
+            });
+        }).catch((error) => {
+            console.error("Error retrieving bookings: ", error);
+        });
+    </script>
+</body>
+</html>

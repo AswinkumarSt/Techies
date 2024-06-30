@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5fd; /* Soft lilac background */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* White container background */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Soft shadow */
+}
+
+#dashboard {
+    margin-top: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #6a5acd; /* Deep lilac heading color */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f0ff; /* Light lilac list item background */
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1); /* Soft shadow */
+}
+
+button {
+    background-color: #9370db; /* Medium lilac button background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #7b68ee; /* Darker lilac on hover */
+}
+
+footer {
+    background-color: #6a5acd; /* Deep lilac footer background */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 2px solid #9370db; /* Medium lilac border on top */
+}
+
+footer p {
+    margin: 0;
+}

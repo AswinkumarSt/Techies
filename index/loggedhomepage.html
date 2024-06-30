@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namastay</title>
+    <link rel="stylesheet" href="loggedhomepage.css">
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <button id="profile-button">Profile</button> <!-- Profile button -->
+    <section id="hero">
+        <div class="container">
+            <h2>Namastay</h2>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Enter a destination..." required>
+                <button class="search-submit" type="button" id="search-button">Search</button>
+            </form>
+        </div>
+    </section>
+    <section id="listings">
+        <div class="container">
+            <!-- Listings will be dynamically generated here -->
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Namastay. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZq-Dz5dkj-I_-x6jNbr0HV4iV61LVd20",
+            authDomain: "namastay-fa137.firebaseapp.com",
+            databaseURL: "https://namastay-fa137-default-rtdb.firebaseio.com",
+            projectId: "namastay-fa137",
+            storageBucket: "namastay-fa137.appspot.com",
+            messagingSenderId: "591100525672",
+            appId: "1:591100525672:web:d826c565a424d5e2838fdd",
+            measurementId: "G-BV1H3F10JN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const searchButton = document.getElementById("search-button");
+        const searchInput = document.getElementById("search-input");
+
+        searchButton.addEventListener("click", () => {
+            const searchTerm = searchInput.value.trim();
+
+            if (searchTerm === "") {
+                alert("Please enter a search term before clicking the search button.");
+            } else {
+                const db = firebase.firestore();
+                const propertiesRef = db.collection("properties");
+
+                propertiesRef.where("location", "==", searchTerm)
+                    .get()
+                    .then((querySnapshot) => {
+                        if (!querySnapshot.empty) {
+                            const properties = [];
+                            querySnapshot.forEach((doc) => {
+                                properties.push(doc.data());
+                            });
+                            localStorage.setItem('searchResults', JSON.stringify(properties));
+                            window.location.href = "propertylisting.html";
+                        } else {
+                            alert("No matching properties found.");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error searching for properties:", error);
+                    });
+            }
+        });
+
+        const signb = document.getElementById("profile-button");
+        signb.addEventListener("click", () => {
+            window.location.href = "profile-dashboard.html";
+        });
+
+        const loginb = document.getElementById("login");
+        loginb.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

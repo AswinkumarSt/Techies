@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Selection</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+       
+    
+        <button type="button" id="cust-btn" class="btn">Customer Portal</button> 
+        <button type="button" id="adm-btn" class="btn">Administrator Portal</button> 
+</body>
+<script>
+    const button1 = document.getElementById("cust-btn");
+    button1.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+     </script>
+     <script>
+        const button2 = document.getElementById("adm-btn");
+        button2.addEventListener("click", () => {
+          window.location.href = "login.html";
+        });
+         </script>
+
+</html>

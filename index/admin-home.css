@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f5ff; /* Light lilac background */
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6a5acd; /* Medium lilac button background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+button:hover {
+    background-color: #8574c9; /* Darker lilac button background on hover */
+}
+
+#property-list {
+    margin-top: 20px;
+}
+
+.property {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.property img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; /* Rounded corners for images */
+}

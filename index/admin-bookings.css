@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f5ff; /* Light lilac background */
+}
+
+h1 {
+    color: #6a5acd; /* Medium lilac heading */
+}
+
+.booking {
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.booking h3 {
+    color: #6a5acd; /* Medium lilac heading */
+}
+
+.booking p {
+    margin-bottom: 10px;
+}
+.booking .delete-booking {
+    padding: 8px 16px;
+    background-color: #6a5acd; /* Medium lilac button background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.booking .delete-booking:hover {
+    background-color: #8574c9; /* Darker lilac button background on hover */
+}

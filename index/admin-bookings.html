@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Bookings</title>
+    <link rel="stylesheet" href="admin-bookings.css">
+</head>
+<body>
+    <h1>Admin Bookings</h1>
+    <div id="bookings-list"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZq-Dz5dkj-I_-x6jNbr0HV4iV61LVd20",
+            authDomain: "namastay-fa137.firebaseapp.com",
+            databaseURL: "https://namastay-fa137-default-rtdb.firebaseio.com",
+            projectId: "namastay-fa137",
+            storageBucket: "namastay-fa137.appspot.com",
+            messagingSenderId: "591100525672",
+            appId: "1:591100525672:web:d826c565a424d5e2838fdd",
+            measurementId: "G-BV1H3F10JN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const bookingsList = document.getElementById('bookings-list');
+
+        // Function to load and display bookings from Firestore
+        function loadBookings() {
+            bookingsList.innerHTML = ''; // Clear the list before loading
+            db.collection('bookings').get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const booking = doc.data();
+                    const bookingDiv = document.createElement('div');
+                    bookingDiv.classList.add('booking');
+                    bookingDiv.innerHTML = `
+                        <h3>Booking Details</h3>
+                        <p>Name: ${booking.name}</p>
+                        <p>Email: ${booking.email}</p>
+                        <p>Check-in Date: ${booking.checkIn}</p>
+                        <p>Check-out Date: ${booking.checkOut}</p>
+                        <button class="delete-booking" data-id="${doc.id}">Delete Booking</button>
+                    `;
+                    bookingsList.appendChild(bookingDiv);
+                });
+
+                // Attach event listeners to delete buttons
+                const deleteButtons = document.querySelectorAll('.delete-booking');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        deleteBooking(id);
+                    });
+                });
+            });
+        }
+
+        // Function to delete a booking from Firestore
+        function deleteBooking(id) {
+            db.collection('bookings').doc(id).delete().then(() => {
+                console.log('Booking deleted successfully');
+                loadBookings(); // Refresh the list
+            }).catch((error) => {
+                console.error('Error deleting booking: ', error);
+            });
+        }
+
+        // Initial load of bookings
+        loadBookings();
+    </script>
+</body>
+</html>

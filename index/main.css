@@ -1,0 +1,52 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('2238239.jpg');
+    background-color: #F1999B;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff; /* Set background color */
+    background-image: url('NAMASTAY.png'); /* Add your background image URL */
+    background-size: 50%; /* Adjust background image size */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+}
+
+/* Container styles */
+.container {
+    text-align: center;
+    max-width: 600px;
+    padding: 0 20px;
+    color: #fff; /* Text color for better visibility on the background */
+}
+
+/* Heading styles */
+h1 {
+    margin-bottom: 30px;
+    font-size: 3rem;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    background-color: #4b0088;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 20px 10px 30px; /* Increase bottom margin */
+    font-size: 1.1rem;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}

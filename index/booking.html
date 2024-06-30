@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="booking.css">
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <section id="booking">
+        <div class="container">
+            <h2>Booking Details</h2>
+            <div id="property-details"></div>
+            <form id="booking-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="check-in">Check-in Date:</label>
+                <input type="date" id="check-in" name="check-in" required>
+
+                <label for="check-out">Check-out Date:</label>
+                <input type="date" id="check-out" name="check-out" required>
+
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Namastay. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZq-Dz5dkj-I_-x6jNbr0HV4iV61LVd20",
+            authDomain: "namastay-fa137.firebaseapp.com",
+            databaseURL: "https://namastay-fa137-default-rtdb.firebaseio.com",
+            projectId: "namastay-fa137",
+            storageBucket: "namastay-fa137.appspot.com",
+            messagingSenderId: "591100525672",
+            appId: "1:591100525672:web:d826c565a424d5e2838fdd",
+            measurementId: "G-BV1H3F10JN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const propertyDetailsContainer = document.getElementById("property-details");
+            const property = JSON.parse(localStorage.getItem('selectedProperty'));
+
+            if (property) {
+                propertyDetailsContainer.innerHTML = `
+                    <h3>${property.name}</h3>
+                    <p>Location: ${property.location}</p>
+                    <p>Price: $${property.price}</p>
+                    <p>${property.description}</p>
+                    <img src="${property.imageUrl}" alt="${property.name}">
+                `;
+            } else {
+                propertyDetailsContainer.innerHTML = "<p>Property details not found.</p>";
+            }
+        });
+
+        const bookingForm = document.getElementById("booking-form");
+        bookingForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const checkInDate = document.getElementById("check-in").value;
+            const checkOutDate = document.getElementById("check-out").value;
+
+            // Store booking details in Firestore
+            db.collection('bookings').add({
+                name: name,
+                email: email,
+                checkInDate: checkInDate,
+                checkOutDate: checkOutDate,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                alert("Booking submitted!");
+                bookingForm.reset();
+                window.location.href = "profile-dashboard.html"; // Redirect to profile dashboard
+            })
+            .catch(error => {
+                console.error("Error storing booking details: ", error);
+            });
+        });
+    </script>
+</body>
+</html>

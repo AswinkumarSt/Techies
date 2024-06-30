@@ -1,0 +1,87 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login Page</title>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+
+  
+
+      </div>
+      <h1>LOGIN</h1>
+      <form action="#" method="post">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <button id="login" type="button" class="login-submit">Login</button>
+
+        <a href="#" class="forgot-password">Forgot your password?</a>
+      </form>
+    </div>
+  </body>
+
+  <script>
+          let firebaseConfig = {
+            apiKey: "AIzaSyDZq-Dz5dkj-I_-x6jNbr0HV4iV61LVd20",
+      authDomain: "namastay-fa137.firebaseapp.com",
+      databaseURL: "https://namastay-fa137-default-rtdb.firebaseio.com",
+      projectId: "namastay-fa137",
+      storageBucket: "namastay-fa137.appspot.com",
+      messagingSenderId: "591100525672",
+      appId: "1:591100525672:web:d826c565a424d5e2838fdd",
+      measurementId: "G-BV1H3F10JN"
+          };
+  
+          firebase.initializeApp(firebaseConfig);
+  
+          
+    
+
+          </script>
+  
+  <script>
+  const db = firebase.firestore();
+
+  const loginButton = document.getElementById("login");
+
+  loginButton.addEventListener("click", async () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      // Query Firestore to check if the email and password match any user
+      const querySnapshot = await db.collection("signup").where("email", "==", email).where("password", "==", password).get();
+
+      if (querySnapshot.empty) {
+        // If no matching user found, display an error message
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Incorrect email or password. Please try again.";
+        errorMessage.style.color = "red";
+        document.querySelector("form").appendChild(errorMessage);
+      } else {
+        // If a matching user found, redirect to the homepage or another page
+        window.location.href = "admin-home.html";
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      // Handle errors here, such as displaying a generic error message
+    }
+  });
+  </script>
+  
+
+ 
+
+
+  </html>

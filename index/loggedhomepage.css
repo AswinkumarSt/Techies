@@ -1,0 +1,230 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/assets/360_F_75155720_inOehrVBWaMr2g63OlKDLfZgwAg6lxdJ.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative; /* Needed for z-index */
+    z-index: 1; /* Ensure content appears above background */
+    animation: slideUp 1s ease-in-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+#hero {
+    background-size: cover;
+    background-position: center;
+    color: #9c488e;
+    text-align: center;
+    padding: 100px 0;
+    flex: 1; /* Allow hero section to grow */
+}
+
+#hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-size: 7.5em;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#hero form {
+    margin-top: 20px;
+}
+
+#hero input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+#hero input[type="text"]:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#hero button {
+    padding: 10px 20px;
+    background-color: #9c488e;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#hero button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+#listings {
+    padding: 50px 0;
+    flex: 1; /* Allow listings section to grow */
+}
+
+.listing {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    animation: bounceIn 1s ease-in-out;
+}
+
+@keyframes bounceIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.listing h3 {
+    margin-top: 0;
+}
+
+.listing p {
+    margin-bottom: 10px;
+}
+
+.site-title {
+    font-size: 48px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #9c488e; /* Airbnb's brand color */
+    font-weight: bold;
+}
+
+.auth-box {
+    display: flex;
+    align-items: center;
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding inside the box */
+}
+
+.auth-box .button {
+    margin-left: 10px; /* Adjust the spacing between the buttons */
+    background-color: #8574c9; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 8px 15px; /* Button padding */
+    border: none; /* Remove button border */
+    border-radius: 3px; /* Button border radius */
+    text-decoration: none; /* Remove underline from links */
+    position: relative;
+}
+
+.auth-box .button:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+}
+
+#search-form input[type="text"] {
+    width: 300px; /* Increase the width of the search bar */
+    height: 40px; /* Increase the height of the search bar */
+    font-size: 1.2em; /* Increase the font size of the text inside the search bar */
+}
+
+.search-submit {
+    padding: 10px 20px;            /* Sets the padding inside the button */
+    background-color: #9c488e;     /* Sets the background color of the button */
+    color: #fff;                   /* Sets the text color of the button */
+    border: none;                  /* Removes any default border around the button */
+    border-radius: 0 5px 5px 0;    /* Rounds the top-right and bottom-right corners of the button */
+    cursor: pointer;               /* Changes the cursor to a pointer when hovering over the button */
+    text-decoration: none;         /* Removes any text decoration (like underline) from the button text */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-submit:hover {
+    background-color: green;       /* Changes the background color of the button when hovered over */
+    transform: scale(1.1);
+}
+
+/* Profile button */
+#profile-button {
+    font-size: larger;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #6a5acd; /* Deep lilac background */
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 9999; /* Ensure the button is on top */
+}
+
+#profile-button:hover {
+    background-color: #1ac725; /* Darker lilac on hover */
+    transform: scale(1.1);
+}

@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5ff; /* Light lilac background */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #6a5acd; /* Medium lilac heading color */
+    margin-bottom: 30px; /* Increased margin for spacing */
+}
+
+/* Property Listings Styles */
+#property-listings {
+    padding: 20px 0;
+}
+
+.property {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #d3d3d3; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    margin-bottom: 30px; /* Increased margin for spacing */
+    box-shadow: 0 4px 8px rgba(106, 90, 205, 0.1); /* Soft shadow with lilac tint */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.property:hover {
+    transform: translateY(-5px); /* Move up on hover */
+}
+
+.property img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded corners for images */
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(106, 90, 205, 0.1); /* Soft shadow with lilac tint */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.property img:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+}
+
+.property h3 {
+    color: #333;
+    margin: 0 0 15px 0; /* Increased bottom margin for spacing */
+}
+
+.property-details p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .property {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #6a5acd; /* Medium lilac background */
+    color: #fff; /* White text color */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
